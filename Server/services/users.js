@@ -1,7 +1,6 @@
 //users.js
 // Service to manage user authentication and register process
 var config = require("../config/config")();
-var mixin = require("../config/mixin")();
 
 // Handle login in aplication
 exports.login = function(req, res){

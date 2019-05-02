@@ -1,7 +1,7 @@
 //config.js
 // Global variables file
-var user = "VascoAmaral";
-var passwd = "VascoAmaral9";
+var user = "rmsf_admin";
+var passwd = "rmsfrmsf19";
 
 module.exports = function () {
     let configs = {
