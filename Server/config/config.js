@@ -1,3 +1,4 @@
+//config.js
 // Global variables file
 var user = "VascoAmaral";
 var passwd = "VascoAmaral9";
@@ -14,8 +15,7 @@ module.exports = function () {
             }
         },
         host: {
-            //path: 'http://192.168.1.53:3000',
-            path: 'https://asint2019jbva.appspot.com',
+            path: 'http://192.168.1.9:3000',
             port: 3000,
             sslPort: 18000
         },
