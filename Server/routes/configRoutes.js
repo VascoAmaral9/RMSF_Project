@@ -1,5 +1,6 @@
 // Routes Configuration
 let userRoutes = require("./userRoutes")
+let measureRoutes = require("./measureRoutes")
 
 var config = require('../config/config')();
 
@@ -9,7 +10,7 @@ function redirectUnmatched(req, res) {
 
 module.exports = function(app){
     app.use('/users', userRoutes);
-    app.use('/measures', userRoutes);
+    app.use('/measures', measureRoutes);
 
     app.use(redirectUnmatched);
 };
