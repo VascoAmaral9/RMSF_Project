@@ -8,7 +8,8 @@ function redirectUnmatched(req, res) {
 }
 
 module.exports = function(app){
-    app.use('/users', userRoutes)
+    app.use('/users', userRoutes);
+    app.use('/measures', userRoutes);
 
     app.use(redirectUnmatched);
 };
