@@ -2,6 +2,8 @@
 // Import measure model
 Measure = require('../models/measureModel');
 
+var mixin = require("../config/mixin");
+
 // Handle index actions
 exports.index = function (req, res) {
     Measure.get(function (err, measures) {
@@ -23,8 +25,13 @@ exports.index = function (req, res) {
 // Handle create data actions
 exports.new = function (req, res) {
     var measure = new Measure();
-    measure.id = req.body.id;
-    measure.value = req.body.value;
+    measure.temperature = req.body.temperature;
+    measure.curr_limit = req.body.curr_limit;
+
+    if(measure.temperature >= measure.curr_limit)
+      measure.fan_status = 1;
+    else
+      measure.fan_status = 0;
 
 
     // save the measure and check for errors
@@ -43,7 +50,8 @@ exports.new = function (req, res) {
 
 // Handle view measure info
 exports.view = function (req, res) {
-    Measure.findOne({id: req.params.id}, function (err, measure) {
+
+    Measure.findById(mixin.toObjectId(req.params.id), function (err, measure) {
         if (err)
             res.json(err);
         else{
@@ -58,19 +66,21 @@ exports.view = function (req, res) {
 
 // Handle update measure info
 exports.update = function (req, res) {
-    Measure.findOne({id: req.params.id}, function (err, measure) {
+    Measure.findById(mixin.toObjectId(req.params.id), function (err, measure) {
         if (err)
             res.json(err);
         else if(measure){
             console.log(measure);
-            measure.id = req.body.id ? req.body.id : measure.id;
-            measure.value = req.body.value ? req.body.value : measure.value;
+            measure.temperature = req.body.temperature ? req.body.temperature : measure.temperature;
+            measure.curr_limit = req.body.curr_limit ? req.body.curr_limit : measure.curr_limit;
+            measure.fan_status = req.body.fan_status ? req.body.fan_status : measure.fan_status;
 
 
-            Measure.findOneAndUpdate({id: req.params.id}, {
+            Measure.findOneAndUpdate({_id: mixin.toObjectId(req.params.id)}, {
               $set: {
-                  id: measure.id,
-                  value: measure.value
+                  temperature: measure.temperature,
+                  curr_limit: measure.curr_limit,
+                  fan_status: measure.fan_status
               }
             }, function (err) {
                 if (err)
@@ -94,7 +104,7 @@ exports.update = function (req, res) {
 // Handle delete measure
 exports.delete = function (req, res) {
     Measure.remove({
-        id: req.params.id
+        _id: mixin.toObjectId(req.params.id)
     },
     function (err, measure) {
         if (err)

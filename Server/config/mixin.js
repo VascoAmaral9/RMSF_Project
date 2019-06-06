@@ -17,4 +17,9 @@ exports.axiosRequest = function(method, url, params, data) {
             reject(error);
         });
     });
-}
+};
+
+exports.toObjectId = function (str) {
+    var ObjectId = (require('mongoose').Types.ObjectId);
+    return new ObjectId(str.toString());
+};

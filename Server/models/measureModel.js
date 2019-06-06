@@ -16,12 +16,15 @@ let schemaOptions = {
 };
 
 var measureSchema = new Schema({
-    id: {
-        type: String,
-        required: true,
-        unique: true
+    temperature: {
+        type: Number,
+        required: true
     },
-    value: {
+    curr_limit:
+        type: Number,
+        required: true
+    },
+    fan_status: // 0 - off, 1 - on
         type: Number,
         required: true
     }
