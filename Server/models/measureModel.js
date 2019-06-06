@@ -20,11 +20,11 @@ var measureSchema = new Schema({
         type: Number,
         required: true
     },
-    curr_limit:
+    curr_limit: {
         type: Number,
         required: true
     },
-    fan_status: // 0 - off, 1 - on
+    fan_status: { // 0 - off, 1 - on
         type: Number,
         required: true
     }
