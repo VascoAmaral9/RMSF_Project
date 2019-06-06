@@ -7,10 +7,12 @@ var measureController = require('../controllers/measureController');
 
 // User routes
 router.route('/')
-    .get(measureController.index)
+    .get(measureController.index);
+
+router.route('/new')
     .post(measureController.new);
 
-router.route('/:id')
+router.route('/view/:id')
     .get(measureController.view)
     .put(measureController.update)
     .delete(measureController.delete);

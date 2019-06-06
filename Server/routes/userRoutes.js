@@ -10,13 +10,15 @@ var userServices = require('../services/users');
 
 // User routes
 router.route('/')
-    .get(userController.index)
+    .get(userController.index);
+
+router.route('/new')
     .post(userController.new);
 
 router.route('/login')
     .post(userServices.login);
 
-router.route('/:username')
+router.route('/view/:username')
     .get(userController.view)
     .put(userController.update)
     .delete(userController.delete);

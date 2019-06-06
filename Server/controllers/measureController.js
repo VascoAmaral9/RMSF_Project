@@ -27,8 +27,9 @@ exports.new = function (req, res) {
     var measure = new Measure();
     measure.temperature = req.body.temperature;
     measure.curr_limit = req.body.curr_limit;
+    measure.fan_controller = req.body.fan_controller;
 
-    if(measure.temperature >= measure.curr_limit)
+    if(measure.temperature >= measure.curr_limit || measure.fan_controller == 1)
       measure.fan_status = 1;
     else
       measure.fan_status = 0;
@@ -73,6 +74,7 @@ exports.update = function (req, res) {
             console.log(measure);
             measure.temperature = req.body.temperature ? req.body.temperature : measure.temperature;
             measure.curr_limit = req.body.curr_limit ? req.body.curr_limit : measure.curr_limit;
+            measure.fan_controller = req.body.fan_controller ? req.body.fan_controller : measure.fan_controller;
             measure.fan_status = req.body.fan_status ? req.body.fan_status : measure.fan_status;
 
 

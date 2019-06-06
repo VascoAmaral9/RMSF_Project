@@ -15,7 +15,8 @@ module.exports = function () {
             }
         },
         host: {
-            path: 'https://rmsf2019jvva.appspot.com',
+            //path: 'https://rmsf2019jvva.appspot.com',
+            path: 'https://192.168.1.9:3000',
             port: 3000,
             sslPort: 18000
         },

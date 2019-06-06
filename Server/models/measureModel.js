@@ -24,9 +24,13 @@ var measureSchema = new Schema({
         type: Number,
         required: true
     },
-    fan_status: { // 0 - off, 1 - on
+    fan_controller: { // 0 - off, 1 - always on
         type: Number,
         required: true
+    },
+    fan_status: { // 0 - off, 1 - on
+      type: Number,
+      required: true
     }
 }, schemaOptions);
 
