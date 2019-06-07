@@ -24,7 +24,6 @@ exports.index = function (req, res) {
 
 // Handle index actions
 exports.last = function (req, res) {
-
     Measure.find().sort({createdAt: -1}).exec()
     .then(function(measures){
       if(measures[0]){
@@ -166,4 +165,22 @@ exports.delete = function (req, res) {
             });
         }
     });
+};
+
+
+// Handle delete measure
+exports.tempChart = function (req, res) {
+  Measure.find().sort({createdAt: -1}).limit(30).exec()
+  .then(function(measures){
+    if(measures[0]){
+      res.json({
+          status: "success",
+          data: measures
+      });
+    } else{
+      res.json({
+          status: "failed"
+      });
+    }
+  });
 };
