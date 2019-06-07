@@ -168,19 +168,49 @@ exports.delete = function (req, res) {
 };
 
 
-// Handle delete measure
+// Handle exportation of last 30 temperature measures
 exports.tempChart = function (req, res) {
   var i = 0;
+  var measuresN = [];
 
   Measure.find().sort({createdAt: -1}).limit(30).exec()
   .then(function(measures){
     if(measures[0]){
       for(i=0;i<30; i++){
-        measures[i].seconds = i*2;
+        measuresN[i] = {
+          'temperature': measures[i].temperature,
+          'seconds': i*2
+        };
       }
       res.json({
           status: "success",
-          data: measures
+          data: measuresN
+      });
+    } else{
+      res.json({
+          status: "failed"
+      });
+    }
+  });
+};
+
+// Handle exportation of last 30 temperature measures
+exports.fanChart = function (req, res) {
+  var i = 0;
+  var measuresN = [];
+
+  Measure.find().sort({createdAt: -1}).limit(30).exec()
+  .then(function(measures){
+    if(measures[0]){
+      for(i=0;i<30; i++){
+        measuresN[i] = {
+          'fan_status': measures[i].fan_status,
+          'seconds': i*2
+        };
+      }
+      res.json({
+          status: "success",
+          data: measuresN
       });
     } else{
       res.json({

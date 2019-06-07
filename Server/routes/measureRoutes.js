@@ -15,6 +15,9 @@ router.route('/last')
 router.route('/tempChart')
     .get(measureController.tempChart);
 
+router.route('/fanChart')
+    .get(measureController.fanChart);
+
 router.route('/new')
     .post(measureController.new);
 
