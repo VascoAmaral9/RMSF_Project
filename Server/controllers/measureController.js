@@ -49,6 +49,33 @@ exports.new = function (req, res) {
     });
 };
 
+// Handle create data actions
+exports.arduinoNew = function (req, res) {
+    var measure = new Measure();
+    measure.temperature = req.query.temperature;
+    measure.curr_limit = req.query.curr_limit;
+    measure.fan_controller = req.query.fan_controller;
+
+    if(measure.temperature >= measure.curr_limit || measure.fan_controller == 1)
+      measure.fan_status = 1;
+    else
+      measure.fan_status = 0;
+
+
+    // save the measure and check for errors
+    measure.save(function (err) {
+        if (err)
+            res.json(err);
+        else{
+            res.json({
+                status: "success",
+                message: 'New measure created!',
+                data: measure
+            });
+        }
+    });
+};
+
 // Handle view measure info
 exports.view = function (req, res) {
 

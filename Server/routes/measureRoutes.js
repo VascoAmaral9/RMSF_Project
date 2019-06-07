@@ -12,6 +12,9 @@ router.route('/')
 router.route('/new')
     .post(measureController.new);
 
+router.route('/arduino')
+    .get(measureController.arduinoNew);
+
 router.route('/view/:id')
     .get(measureController.view)
     .put(measureController.update)
