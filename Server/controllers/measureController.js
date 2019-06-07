@@ -170,9 +170,14 @@ exports.delete = function (req, res) {
 
 // Handle delete measure
 exports.tempChart = function (req, res) {
+  var i = 0;
+
   Measure.find().sort({createdAt: -1}).limit(30).exec()
   .then(function(measures){
     if(measures[0]){
+      for(i=0;i<30; i++){
+        measures[i].seconds = i*2;
+      }
       res.json({
           status: "success",
           data: measures
