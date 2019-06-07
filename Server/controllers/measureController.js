@@ -45,6 +45,7 @@ exports.last = function (req, res) {
 // Handle create data actions
 exports.new = function (req, res) {
     var measure = new Measure();
+
     measure.temperature = req.body.temperature;
     measure.curr_limit = req.body.curr_limit;
     measure.fan_controller = req.body.fan_controller;
@@ -62,6 +63,7 @@ exports.new = function (req, res) {
         else{
             res.json({
                 status: "success",
+                threshold: global.threshold,
                 message: 'New measure created!',
                 data: measure
             });
@@ -89,6 +91,7 @@ exports.arduinoNew = function (req, res) {
         else{
             res.json({
                 status: "success",
+                threshold: global.threshold,
                 message: 'New measure created!',
                 data: measure
             });
@@ -224,7 +227,7 @@ exports.fanChart = function (req, res) {
 exports.threshold = function (req, res) {
   if(req.body.threshold){
     global.threshold = req.body.threshold;
-    
+
     console.log(global.threshold);
     res.json({
       status: "success"

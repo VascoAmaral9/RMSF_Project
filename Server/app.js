@@ -4,6 +4,8 @@ var app = require('./config/base')();
 require('./services/db')(app);
 require('./routes/configRoutes')(app);
 
+global.threshold = 25;
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

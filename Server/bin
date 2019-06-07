@@ -7,8 +7,6 @@ var https = require('https');
 var fs = require('fs-extra');
 var path = require('path');
 
-var threshold = 25;
-
 
 var config = require('./config/config')();
 
