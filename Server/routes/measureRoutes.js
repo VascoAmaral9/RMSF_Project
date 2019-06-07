@@ -9,6 +9,9 @@ var measureController = require('../controllers/measureController');
 router.route('/')
     .get(measureController.index);
 
+router.route('/last')
+    .get(measureController.last);
+
 router.route('/new')
     .post(measureController.new);
 

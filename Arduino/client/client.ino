@@ -77,11 +77,10 @@ void setup() {
   if (client.connect(server, 80)) {
     Serial.println("connected to server");
     // Make a HTTP request:
-    client.println("POST /measures/new HTTP/1.1");
+    client.println("GET /measures/arduino?temperature=29.0&amp;curr_limit=24&amp;fan_controller=0 HTTP/1.1");
     client.println("Host: rmsf2019jvva.appspot.com");
     client.println("Content-Type: application/x-www-form-urlencoded");
     client.println();
-    client.println("temperature=25.0&curr_limit=24&fan_controller=0");
   }
 }
 

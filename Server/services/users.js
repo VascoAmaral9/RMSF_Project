@@ -4,6 +4,7 @@ var config = require("../config/config")();
 
 // Handle login in aplication
 exports.login = function(req, res){
+    console.log(req.body);
     if(req.body.username && req.body.password){
       User.findOne({username: req.body.username, password: req.body.password}, function (err, user) {
           if (err) //Erro da base de dados
@@ -27,3 +28,16 @@ exports.login = function(req, res){
       });
     }
 };
+
+exports.fanOnOff = function(req, res){
+    console.log(req.body);
+    if(req.body.value){
+      //Send to arduino
+
+
+    } else{ //Não foi enviado um dos campos necessários
+      res.json({
+          status: "failed"
+      });
+    }
+}

@@ -22,6 +22,27 @@ exports.index = function (req, res) {
     });
 };
 
+// Handle index actions
+exports.last = function (req, res) {
+
+    Measure.find().sort({createdAt: -1}).exec()
+    .then(function(measures){
+      if(measures[0]){
+        res.json({
+            status: "success",
+            temperature: measures[0].temperature,
+            fan_status: measures[0].fan_status,
+            curr_limit: measures[0].curr_limit
+        });
+      } else{
+        res.json({
+            status: "failed"
+        });
+      }
+    });
+
+};
+
 // Handle create data actions
 exports.new = function (req, res) {
     var measure = new Measure();
