@@ -28,16 +28,3 @@ exports.login = function(req, res){
       });
     }
 };
-
-exports.fanOnOff = function(req, res){
-    console.log(req.body);
-    if(req.body.value){
-      //Send to arduino
-
-
-    } else{ //Não foi enviado um dos campos necessários
-      res.json({
-          status: "failed"
-      });
-    }
-}

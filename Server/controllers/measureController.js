@@ -219,3 +219,19 @@ exports.fanChart = function (req, res) {
     }
   });
 };
+
+// Handle change of threshold
+exports.threshold = function (req, res) {
+  if(req.body.threshold){
+    global.threshold = req.body.threshold;
+    
+    console.log(global.threshold);
+    res.json({
+      status: "success"
+    });
+  } else{
+    res.json({
+        status: "failed"
+    });
+  }
+};

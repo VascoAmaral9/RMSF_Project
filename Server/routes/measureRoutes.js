@@ -18,6 +18,9 @@ router.route('/tempChart')
 router.route('/fanChart')
     .get(measureController.fanChart);
 
+router.route('/threshold')
+    .post(measureController.threshold);
+
 router.route('/new')
     .post(measureController.new);
 
