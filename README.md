@@ -1,4 +1,2 @@
 # RMSF_Project
-Por incrivel que pareça o Velez ainda é panaca mesmo que noutro projecto
-
-E o Vasco vai dar um ganda carry e fazer o projeto de RMSF sozinho
+IoT ecosystem to monitor and maintain air temperature around temperature-sensitive electronic devices, composed of a user friendly interface in an Android application, a web server and database deployed in Google Cloud Platform and physical system englobing an Arduino, temperature sensor, wifi chip and a fan. 
